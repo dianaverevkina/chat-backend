@@ -22,7 +22,6 @@ app.use((req, res, next) => {
 
 const userState = [];
 app.post("/new-user", async (request, response) => {
-  console.log(request.body)
   if (Object.keys(request.body).length === 0) {
     const result = {
       status: "error",
@@ -54,7 +53,6 @@ app.post("/new-user", async (request, response) => {
 
 const server = http.createServer(app);
 const wsServer = new WebSocketServer({ server });
-console.log(server.server)
 wsServer.on("connection", (ws) => {
   ws.on("message", (msg, isBinary) => {
     const receivedMSG = JSON.parse(msg);
