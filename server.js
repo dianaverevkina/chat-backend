@@ -56,6 +56,7 @@ const wsServer = new WebSocketServer({ server });
 wsServer.on("connection", (ws) => {
   ws.on("message", (msg, isBinary) => {
     const receivedMSG = JSON.parse(msg);
+    console.log(receivedMSG)
     console.dir(receivedMSG);
     if (receivedMSG.type === "exit") {
       const idx = userState.findIndex(
